@@ -11,7 +11,7 @@ export default function DropDown(props) {
       setDisplayedOptions(props.options);
     } else {
       const newDisplayedOptions = props.options.filter((option) =>
-        option.toLowerCase().includes(searchText.toLowerCase())
+        option.name.toLowerCase().includes(searchText.toLowerCase())
       );
       setDisplayedOptions(newDisplayedOptions);
     }
@@ -21,7 +21,9 @@ export default function DropDown(props) {
     <div id={styles.container}>
       <div id={styles.top} onClick={() => setDropDownActive(!dropDownActive)}>
         <div id={styles.textContainer}>
-          {props.options[props.selectedOption]}
+          {props.selectedOption
+            ? `${props.selectedOption.name}, ${props.selectedOption.position}, ${props.selectedOption.season}`
+            : "None"}
         </div>
         <div id={styles.dropDownIconContainer}>
           <svg
@@ -37,7 +39,7 @@ export default function DropDown(props) {
         </div>
       </div>
       {dropDownActive && (
-        <div id={styles.bottom}>
+        <div id={styles.bottom} onMouseLeave={() => setDropDownActive(false)}>
           {props.options.length > 0 ? (
             <div id={styles.searchContainer}>
               <input
@@ -46,6 +48,7 @@ export default function DropDown(props) {
                 autoComplete="off"
                 onChange={(e) => setSearchText(e.target.value)}
                 autoFocus
+                placeholder="Search"
               ></input>
             </div>
           ) : (
@@ -57,17 +60,19 @@ export default function DropDown(props) {
             </div>
           )}
           <div id={styles.dropDownOptions}>
-            {displayedOptions.map((option, index) => {
+            {displayedOptions.map((option) => {
               return (
                 <div
-                  key={index}
+                  key={option.id}
                   className={styles.dropDownOptionContainer}
                   onClick={() => {
-                    props.toggleSelectedOption(index);
+                    props.toggleSelectedOption(option);
                   }}
                 >
-                  <p>{option}</p>
-                  {props.selectedOptionIndex == index && <span>✓</span>}
+                  <p>
+                    {`${option.name}, ${option.position}, ${option.season}`}
+                  </p>
+                  {props.selectedOption === option && <span>✓</span>}
                 </div>
               );
             })}
