@@ -5,9 +5,9 @@ export default function playerSelect(props) {
   return (
     <div>
       <DropDown
-        options={["Connor McDavid", "Leon Draisaitl"]}
-        selectedOptionIndex={props.selectedPlayerIndex}
-        toggleSelectedOption={props.toggleSelectedPlayerIndex}
+        options={props.options}
+        selectedOption={props.selectedPlayer}
+        toggleSelectedOption={props.toggleSelectedPlayer}
       />
     </div>
   );
