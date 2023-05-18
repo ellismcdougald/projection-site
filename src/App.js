@@ -2,27 +2,18 @@ import "./App.css";
 import PlayerSelect from "./components/playerSelect";
 import { useState, useEffect } from "react";
 
-const PLAYERS = [
-  {
-    name: "Connor McDavid",
-    position: "C",
-    season: "2021-22",
-    id: 1,
-  },
-  {
-    name: "Leon Draisaitl",
-    position: "C",
-    season: "2021-22",
-    id: 2,
-  },
-];
-
 function App() {
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [players, setPlayers] = useState(null);
 
-  function toggleSelectedPlayer(playerIndex) {
-    setSelectedPlayer(playerIndex);
+  function toggleSelectedPlayer(player) {
+    if (selectedPlayer === null) {
+      setSelectedPlayer(player);
+    } else if (selectedPlayer.id !== player.id) {
+      setSelectedPlayer(player);
+    } else {
+      setSelectedPlayer(null);
+    }
   }
 
   useEffect(() => {
