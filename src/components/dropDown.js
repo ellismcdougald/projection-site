@@ -23,7 +23,7 @@ export default function DropDown(props) {
         <div id={styles.textContainer}>
           {props.selectedOption
             ? `${props.selectedOption.name}, ${props.selectedOption.position}, ${props.selectedOption.season}`
-            : "None"}
+            : props.emptyMessage}
         </div>
         <div id={styles.dropDownIconContainer}>
           <svg
@@ -72,7 +72,8 @@ export default function DropDown(props) {
                   <p>
                     {`${option.name}, ${option.position}, ${option.season}`}
                   </p>
-                  {props.selectedOption === option && <span>✓</span>}
+                  {props.selectedOption &&
+                    props.selectedOption.id === option.id && <span>✓</span>}
                 </div>
               );
             })}
