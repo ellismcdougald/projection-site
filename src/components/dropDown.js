@@ -11,7 +11,7 @@ export default function DropDown(props) {
       setDisplayedOptions(props.options);
     } else {
       const newDisplayedOptions = props.options.filter((option) =>
-        option.name.toLowerCase().includes(searchText.toLowerCase())
+        option.player.toLowerCase().includes(searchText.toLowerCase())
       );
       setDisplayedOptions(newDisplayedOptions);
     }
@@ -22,7 +22,7 @@ export default function DropDown(props) {
       <div id={styles.top} onClick={() => setDropDownActive(!dropDownActive)}>
         <div id={styles.textContainer}>
           {props.selectedOption
-            ? `${props.selectedOption.name}, ${props.selectedOption.position}, ${props.selectedOption.season}`
+            ? `${props.selectedOption.player}, ${props.selectedOption.position}, ${props.selectedOption.season}`
             : props.emptyMessage}
         </div>
         <div id={styles.dropDownIconContainer}>
@@ -70,7 +70,7 @@ export default function DropDown(props) {
                   }}
                 >
                   <p>
-                    {`${option.name}, ${option.position}, ${option.season}`}
+                    {`${option.player}, ${option.position}, ${option.season}`}
                   </p>
                   {props.selectedOption &&
                     props.selectedOption.id === option.id && <span>✓</span>}
