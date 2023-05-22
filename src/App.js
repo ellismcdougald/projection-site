@@ -18,18 +18,29 @@ function App() {
 
   useEffect(() => {
     fetch("data.csv").then((response) =>
-      response.text().then((text) =>
-        setPlayers(
-          text
-            .split("\n")
-            .map((i) => i.split(","))
-            .map((i) => {
-              return { name: i[0], position: i[1], season: i[2], id: i[3] };
-            })
-        )
-      )
+      response.json().then((json) => setPlayers(json))
     );
-  }, [players]);
+  }, []);
+
+  // useEffect(() => {
+  //   fetch("data.csv").then((response) =>
+  //     response.text().then((text) =>
+  //       setPlayers(
+  //         text
+  //           .split("\n")
+  //           .map((i) => i.split(","))
+  //           .map((i, index) => {
+  //             return {
+  //               name: i[0],
+  //               id: index,
+  //               season: i[2],
+  //               position: i[3],
+  //             };
+  //           })
+  //       )
+  //     )
+  //   );
+  // }, [players]);
 
   return (
     <div className="App">
