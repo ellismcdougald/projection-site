@@ -8,6 +8,7 @@ export default function playerSelect(props) {
         options={props.options}
         selectedOption={props.selectedPlayer}
         toggleSelectedOption={props.toggleSelectedPlayer}
+        emptyMessage="Select a player..."
       />
     </div>
   );
