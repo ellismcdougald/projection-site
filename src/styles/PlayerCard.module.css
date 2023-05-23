@@ -1,0 +1,35 @@
+#container {
+  display: flex;
+  justify-content: center;
+}
+
+#cardContainer {
+  border: solid black 1px;
+  display: flex;
+  width: 80%;
+}
+
+#projectionChartContainer {
+  width: 65%;
+}
+
+#playerBio {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  width: 35%;
+}
+
+.headerText {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+#positionSeasonText {
+  margin-top: 0.1em;
+}
+
+#statsHeader {
+  margin-top: 1em;
+}
