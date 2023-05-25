@@ -8,6 +8,7 @@ import {
   LinearScale,
   PointElement,
 } from "chart.js";
+import ComparablesContainer from "./ComparablesContainer";
 
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement);
 
@@ -64,7 +65,7 @@ export default function PlayerCard(props) {
             </h2>
             <div>
               <h3 className={styles.headerText} id={styles.statsHeader}>
-                Statistics:
+                <ComparablesContainer comparables={props.player.comparables} />
               </h3>
             </div>
           </div>
