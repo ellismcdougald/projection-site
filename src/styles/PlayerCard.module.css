@@ -33,3 +33,7 @@
 #statsHeader {
   margin-top: 1em;
 }
+
+#statsContainer {
+  width: 4000px;
+}
