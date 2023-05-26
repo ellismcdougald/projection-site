@@ -15,6 +15,8 @@ function App() {
     } else {
       setSelectedPlayer(null);
     }
+
+    console.log(selectedPlayer);
   }
 
   useEffect(() => {
@@ -31,7 +33,7 @@ function App() {
         selectedPlayer={selectedPlayer}
         toggleSelectedPlayer={toggleSelectedPlayer}
       />
-      <PlayerCard player={selectedPlayer}></PlayerCard>
+      {selectedPlayer && <PlayerCard player={selectedPlayer}></PlayerCard>}
     </div>
   );
 }
