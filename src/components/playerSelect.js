@@ -3,7 +3,7 @@ import DropDown from "./dropDown";
 
 export default function playerSelect(props) {
   return (
-    <div>
+    <div className="flex gap-x-10">
       <DropDown
         mode="player"
         options={props.playerOptions}
