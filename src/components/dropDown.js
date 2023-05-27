@@ -21,9 +21,12 @@ export default function DropDown(props) {
     <div id={styles.container}>
       <div id={styles.top} onClick={() => setDropDownActive(!dropDownActive)}>
         <div id={styles.textContainer}>
-          {props.selectedOption
-            ? `${props.selectedOption.player}, ${props.selectedOption.position}, ${props.selectedOption.season}`
-            : props.emptyMessage}
+          {props.mode === "player" &&
+            (props.selectedOption
+              ? `${props.selectedOption.player}, ${props.selectedOption.position}, ${props.selectedOption.season}`
+              : props.emptyMessage)}
+          {props.mode === "view" &&
+            (props.selectedOption ? props.selectedOption : props.emptyMessage)}
         </div>
         <div id={styles.dropDownIconContainer}>
           <svg
@@ -40,25 +43,27 @@ export default function DropDown(props) {
       </div>
       {dropDownActive && (
         <div id={styles.bottom} onMouseLeave={() => setDropDownActive(false)}>
-          {props.options.length > 0 ? (
-            <div id={styles.searchContainer}>
-              <input
-                id={styles.searchInput}
-                type="text"
-                autoComplete="off"
-                onChange={(e) => setSearchText(e.target.value)}
-                autoFocus
-                placeholder="Search"
-              ></input>
-            </div>
-          ) : (
-            <div
-              className={styles.dropDownOptionContainer}
-              id={styles.noOptionsDiv}
-            >
-              No Options
-            </div>
-          )}
+          {props.mode === "player" &&
+            (props.options.length > 0 ? (
+              <div id={styles.searchContainer}>
+                <input
+                  id={styles.searchInput}
+                  type="text"
+                  autoComplete="off"
+                  onChange={(e) => setSearchText(e.target.value)}
+                  autoFocus
+                  placeholder="Search"
+                ></input>
+              </div>
+            ) : (
+              <div
+                className={styles.dropDownOptionContainer}
+                id={styles.noOptionsDiv}
+              >
+                No Options
+              </div>
+            ))}
+
           <div id={styles.dropDownOptions}>
             {displayedOptions.map((option) => {
               return (
@@ -70,10 +75,16 @@ export default function DropDown(props) {
                   }}
                 >
                   <p>
-                    {`${option.player}, ${option.position}, ${option.season}`}
+                    {props.mode === "player" &&
+                      `${option.player}, ${option.position}, ${option.season}`}
+                    {props.mode === "view" && option}
                   </p>
-                  {props.selectedOption &&
+                  {props.mode === "player" &&
+                    props.selectedOption &&
                     props.selectedOption.id === option.id && <span>✓</span>}
+                  {props.mode === "view" &&
+                    props.selectedOption &&
+                    props.selectedOption === option && <span>✓</span>}
                 </div>
               );
             })}
