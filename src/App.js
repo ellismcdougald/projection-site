@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [selectedPlayer, setSelectedPlayer] = useState(null);
+  const [selectedView, setSelectedView] = useState(null);
   const [players, setPlayers] = useState(null);
 
   function toggleSelectedPlayer(player) {
@@ -15,23 +16,22 @@ function App() {
     } else {
       setSelectedPlayer(null);
     }
-
-    console.log(selectedPlayer);
   }
 
   useEffect(() => {
     fetch("data.csv").then((response) =>
       response.json().then((json) => setPlayers(json))
     );
-    console.log(players);
   }, []);
 
   return (
-    <div className="App">
+    <div className="flex flex-col items-center justify-center p-5">
       <PlayerSelect
-        options={players}
+        playerOptions={players}
         selectedPlayer={selectedPlayer}
         toggleSelectedPlayer={toggleSelectedPlayer}
+        selectedView={selectedView}
+        toggleSelectedView={setSelectedView}
       />
       {selectedPlayer && <PlayerCard player={selectedPlayer}></PlayerCard>}
     </div>
