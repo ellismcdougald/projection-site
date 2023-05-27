@@ -1,14 +1,6 @@
 import React from "react";
 import styles from "../styles/ComparableCard.module.css";
-import { Line } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  LineElement,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-} from "chart.js";
-ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement);
+import TrajectoryChart from "./TrajectoryChart";
 
 export default function ComparableCard(props) {
   const data = {
@@ -60,9 +52,13 @@ export default function ComparableCard(props) {
         </h2>
       </div>
       <div id={styles.rightContainer}>
-        <div id={styles.chartContainer}>
-          <Line data={data} options={options}></Line>
-        </div>
+        <TrajectoryChart
+          data={[
+            1.95, 2.46, 3.84, 3.03928268, 2.9608289127, 2.9737694739,
+            3.1355211395, 3.3008620495,
+          ]}
+          labels={["20", "21", "22", "23", "24", "25", "26", "27"]}
+        />
       </div>
     </div>
   );
