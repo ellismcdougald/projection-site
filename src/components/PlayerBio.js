@@ -5,9 +5,9 @@ import React from "react";
 
 export default function PlayerBio(props) {
   return (
-    <div>
-      <h1>{props.name}</h1>
-      <h2>
+    <div className="flex flex-col items-center justify-center border-b-2 border-black font-mono">
+      <h1 className="text-2xl">{props.name}</h1>
+      <h2 className="text-xl">
         {props.position}, {props.season}
       </h2>
     </div>
