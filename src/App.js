@@ -33,7 +33,9 @@ function App() {
         selectedView={selectedView}
         toggleSelectedView={setSelectedView}
       />
-      {selectedPlayer && <PlayerCard player={selectedPlayer}></PlayerCard>}
+      {selectedPlayer && (
+        <PlayerCard player={selectedPlayer} view={selectedView} />
+      )}
     </div>
   );
 }
