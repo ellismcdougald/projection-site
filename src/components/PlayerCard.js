@@ -12,7 +12,7 @@ export default function PlayerCard(props) {
       className="w-4/5 flex flex-col items-center justify-center p-10"
     >
       {props.player && (
-        <div id={styles.cardContainer}>
+        <div className="w-full" id={styles.cardContainer}>
           <PlayerBio
             name={props.player.player}
             position={props.player.position}
