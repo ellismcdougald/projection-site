@@ -12,8 +12,7 @@ const testArr = [
 
 export default function ComparablesContainer(props) {
   return (
-    <div>
-      Comparables:
+    <div className="container m-auto grid grid-cols-2 gap-10">
       {props.comparables.map((comp) => {
         return <ComparableCard playerArr={comp} />;
       })}
