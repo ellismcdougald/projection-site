@@ -83,9 +83,5 @@ export default function SkillsChart(props) {
       },
     ],
   };
-  return (
-    <div>
-      <Bar data={data} options={options} />
-    </div>
-  );
+  return <Bar data={data} options={options} />;
 }

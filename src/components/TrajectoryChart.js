@@ -55,10 +55,5 @@ export default function TrajectoryChart(props) {
     },
   };
 
-  return (
-    <div className="w-full pt-2">
-      <h1 className="font-mono text-center">Points/60 Forecast:</h1>
-      <Line data={data} options={options}></Line>
-    </div>
-  );
+  return <Line data={data} options={options}></Line>;
 }
