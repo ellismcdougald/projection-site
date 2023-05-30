@@ -16,6 +16,7 @@ function App() {
     } else {
       setSelectedPlayer(null);
     }
+    console.log(selectedPlayer);
   }
 
   useEffect(() => {

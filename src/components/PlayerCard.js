@@ -23,7 +23,8 @@ export default function PlayerCard(props) {
               <h1 className="font-mono text-center">Points/60 Forecast:</h1>
 
               <TrajectoryChart
-                data={[1, 2, 3, 3, 3, 3, 3, 3]}
+                // data={[1, 2, 3, 3, 3, 3, 3, 3]}
+                data={[...props.player.last_three, ...props.player.projection]}
                 labels={[
                   "'20",
                   "'21",
