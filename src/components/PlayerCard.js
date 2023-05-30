@@ -21,20 +21,27 @@ export default function PlayerCard(props) {
           {props.view === "Projection" && (
             <div className="w-full pt-2">
               <h1 className="font-mono text-center">Points/60 Forecast:</h1>
-
+              {console.log(props.player)}
               <TrajectoryChart
-                // data={[1, 2, 3, 3, 3, 3, 3, 3]}
-                data={[...props.player.last_three, ...props.player.projection]}
-                labels={[
-                  "'20",
-                  "'21",
-                  "'22",
-                  "'23",
-                  "'24",
-                  "'25",
-                  "'26",
-                  "'27",
+                //data={[1, 2, 3, 3, 3, 3, 3, 3]}
+                data={[
+                  ...Object.values(props.player.last_three),
+                  ...Object.values(props.player.projection),
                 ]}
+                labels={[
+                  ...Object.keys(props.player.last_three),
+                  ...Object.keys(props.player.projection),
+                ].map((i) => "'" + i)}
+                // labels={[
+                //   "'20",
+                //   "'21",
+                //   "'22",
+                //   "'23",
+                //   "'24",
+                //   "'25",
+                //   "'26",
+                //   "'27",
+                // ]}
               />
             </div>
           )}
