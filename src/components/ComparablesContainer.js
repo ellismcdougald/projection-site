@@ -14,7 +14,8 @@ export default function ComparablesContainer(props) {
   return (
     <div className="container m-auto grid grid-cols-2 gap-10">
       {props.comparables.map((comp) => {
-        return <ComparableCard playerArr={comp} />;
+        console.log(Object.keys(comp["last_3"]));
+        return <ComparableCard playerDict={comp} />;
       })}
     </div>
   );
