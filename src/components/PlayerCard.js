@@ -23,7 +23,6 @@ export default function PlayerCard(props) {
               <h1 className="font-mono text-center">Points/60 Forecast:</h1>
               {console.log(props.player)}
               <TrajectoryChart
-                //data={[1, 2, 3, 3, 3, 3, 3, 3]}
                 data={[
                   ...Object.values(props.player.last_three),
                   ...Object.values(props.player.projection),
@@ -32,16 +31,6 @@ export default function PlayerCard(props) {
                   ...Object.keys(props.player.last_three),
                   ...Object.keys(props.player.projection),
                 ].map((i) => "'" + i)}
-                // labels={[
-                //   "'20",
-                //   "'21",
-                //   "'22",
-                //   "'23",
-                //   "'24",
-                //   "'25",
-                //   "'26",
-                //   "'27",
-                // ]}
               />
             </div>
           )}
@@ -57,12 +46,31 @@ export default function PlayerCard(props) {
               <ComparablesContainer comparables={props.player.comparables} />
             </div>
           )}
-          {/* <ComparablesContainer comparables={props.player.comparables} />
-          <TrajectoryChart
-            data={[1, 2, 3, 3, 3, 3, 3, 3]}
-            labels={["20", "21", "22", "23", "24", "25", "26", "27"]}
-          />
-          <SkillsChart player={props.player} /> */}
+          {props.view === "All" && (
+            <div className="container m-auto grid grid-cols-2 column-gap-10 pt-2">
+              <div className="font-mono text-center">
+                <h1>Skills Profile:</h1>
+                <SkillsChart player={props.player} />
+              </div>
+              <div>
+                <h1 className="font-mono text-center">Projection:</h1>
+                <TrajectoryChart
+                  data={[
+                    ...Object.values(props.player.last_three),
+                    ...Object.values(props.player.projection),
+                  ]}
+                  labels={[
+                    ...Object.keys(props.player.last_three),
+                    ...Object.keys(props.player.projection),
+                  ].map((i) => "'" + i)}
+                />
+              </div>
+              <div className="col-span-2 pt-2">
+                <h1 className="font-mono text-center">Comparables:</h1>
+                <ComparablesContainer comparables={props.player.comparables} />
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
