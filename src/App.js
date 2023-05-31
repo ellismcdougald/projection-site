@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [selectedPlayer, setSelectedPlayer] = useState(null);
-  const [selectedView, setSelectedView] = useState(null);
+  const [selectedView, setSelectedView] = useState("All");
   const [players, setPlayers] = useState(null);
 
   function toggleSelectedPlayer(player) {
