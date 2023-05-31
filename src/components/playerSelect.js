@@ -13,7 +13,7 @@ export default function playerSelect(props) {
       />
       <DropDown
         mode="view"
-        options={["Projection", "Skills Breakdown", "Comparables"]}
+        options={["All", "Projection", "Skills Breakdown", "Comparables"]}
         selectedOption={props.selectedView}
         toggleSelectedOption={props.toggleSelectedView}
         emptyMessage="Select a view..."
