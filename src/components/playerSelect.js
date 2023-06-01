@@ -10,6 +10,7 @@ export default function playerSelect(props) {
         selectedOption={props.selectedPlayer}
         toggleSelectedOption={props.toggleSelectedPlayer}
         emptyMessage="Select a player..."
+        width={22.5}
       />
       <DropDown
         mode="view"
@@ -17,6 +18,7 @@ export default function playerSelect(props) {
         selectedOption={props.selectedView}
         toggleSelectedOption={props.toggleSelectedView}
         emptyMessage="Select a view..."
+        width={12.5}
       />
     </div>
   );

@@ -18,7 +18,7 @@ export default function DropDown(props) {
   }, [searchText, props.options]);
 
   return (
-    <div id={styles.container}>
+    <div id={styles.container} style={{ width: props.width + "em" }}>
       <div id={styles.top} onClick={() => setDropDownActive(!dropDownActive)}>
         <div id={styles.textContainer}>
           {props.mode === "player" &&
@@ -45,9 +45,13 @@ export default function DropDown(props) {
         <div id={styles.bottom} onMouseLeave={() => setDropDownActive(false)}>
           {props.mode === "player" &&
             (props.options.length > 0 ? (
-              <div id={styles.searchContainer}>
+              <div
+                id={styles.searchContainer}
+                className="flex h-9 items-center justify-center"
+              >
                 <input
                   id={styles.searchInput}
+                  className="w-full"
                   type="text"
                   autoComplete="off"
                   onChange={(e) => setSearchText(e.target.value)}
