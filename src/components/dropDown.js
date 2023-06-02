@@ -44,7 +44,7 @@ export default function DropDown(props) {
       {dropDownActive && (
         <div id={styles.bottom} onMouseLeave={() => setDropDownActive(false)}>
           {props.mode === "player" &&
-            (props.options.length > 0 ? (
+            (props.options && props.options.length > 0 ? (
               <div
                 id={styles.searchContainer}
                 className="flex h-9 items-center justify-center"
@@ -72,7 +72,7 @@ export default function DropDown(props) {
             {displayedOptions.map((option) => {
               return (
                 <div
-                  key={option.id}
+                  key={option.id + option.season}
                   className={styles.dropDownOptionContainer}
                   onClick={() => {
                     props.toggleSelectedOption(option);
