@@ -6,12 +6,28 @@ export default function DropDown(props) {
   const [searchText, setSearchText] = useState("");
   const [displayedOptions, setDisplayedOptions] = useState(props.options);
 
+  /* Filter function from https://dev.to/functional_js/write-a-custom-javascript-filter-function-that-is-60-faster-than-array-filter-4b66 */
+  const fil = (fn, a) => {
+    const f = []; //final
+    for (let i = 0; i < a.length; i++) {
+      if (fn(a[i])) {
+        f.push(a[i]);
+      }
+    }
+    return f;
+  };
+
   useEffect(() => {
     if (searchText === "") {
       setDisplayedOptions(props.options);
     } else {
-      const newDisplayedOptions = props.options.filter((option) =>
-        option.player.toLowerCase().includes(searchText.toLowerCase())
+      // const newDisplayedOptions = props.options.filter((option) =>
+      //   option.player.toLowerCase().includes(searchText.toLowerCase())
+      // );
+      const newDisplayedOptions = fil(
+        (option) =>
+          option.player.toLowerCase().includes(searchText.toLowerCase()),
+        props.options
       );
       setDisplayedOptions(newDisplayedOptions);
     }
@@ -42,7 +58,12 @@ export default function DropDown(props) {
         </div>
       </div>
       {dropDownActive && (
-        <div id={styles.bottom} onMouseLeave={() => setDropDownActive(false)}>
+        <div
+          id={styles.bottom}
+          onMouseLeave={() => {
+            setDropDownActive(false);
+          }}
+        >
           {props.mode === "player" &&
             (props.options && props.options.length > 0 ? (
               <div
