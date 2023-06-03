@@ -47,7 +47,7 @@ export default function PlayerCard(props) {
             </div>
           )}
           {props.view === "All" && (
-            <div className="container m-auto grid grid-cols-2 column-gap-10 pt-2">
+            <div className="container m-auto grid grid-cols-2 gap-x-10 pt-2">
               <div className="font-mono text-center">
                 <h1>Skills Profile:</h1>
                 <SkillsChart player={props.player} />
